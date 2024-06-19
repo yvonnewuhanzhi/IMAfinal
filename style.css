@@ -16,6 +16,20 @@ body {
  
 }
 
+h1 {
+    user-select: none;
+}
+
+h2 {
+    user-select: none;
+}
+
+h3 {
+    user-select: none;
+}
+p{
+    user-select: none;
+}
 /* 固定页面不滚动 */
 #page1 {
     height: 100vh; /* 设置高度为视口高度 */

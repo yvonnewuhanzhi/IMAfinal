@@ -150,6 +150,22 @@
             top: 63%;
             z-index: 6;
         }
+
+        p {
+            user-select: none;
+        }
+
+        h1 {
+            user-select: none;
+        }
+
+        h2 {
+            user-select: none;
+        }
+
+        h3 {
+            user-select: none;
+        }
     </style>
 </head>
 
@@ -221,7 +237,7 @@
             <img src="../images/day28/bubble.png" id="day28bubble1" class="bubble">
             <img src="../images/day28/good.png" id="text1" class="text">
             <img src="../images/day28/bubble2.png" id="day28bubble2" class="bubble">
-    
+
             <img src="../images/day28/idea.png" id="text2" class="text">
         </div>
     </section>
@@ -252,7 +268,7 @@
         </div>
     </section>
 
-   
+
     <section id="day50"></section>
     <script src="../js/day.js"></script>
     <script>
@@ -336,69 +352,69 @@
         });
 
         document.addEventListener("DOMContentLoaded", function () {
-    let scrollAnimationId = null; // 存储 requestAnimationFrame 的 ID
-    let isScrolling = false; // 标志位，表示当前是否正在滚动中
-    let currentScrollPosition = 0; // 记录当前的滚动位置
+            let scrollAnimationId = null; // 存储 requestAnimationFrame 的 ID
+            let isScrolling = false; // 标志位，表示当前是否正在滚动中
+            let currentScrollPosition = 0; // 记录当前的滚动位置
 
-    const scrollButton = document.createElement('button'); // 创建按钮元素
-    scrollButton.textContent = 'Auto Scroll'; // 按钮文本内容
-    scrollButton.style.position = 'fixed'; // 固定定位，保持在页面某个位置
-    scrollButton.style.bottom = '20px'; // 距离底部 20px
-    scrollButton.style.right = '20px'; // 距离右侧 20px
-    scrollButton.style.zIndex = '9999'; // 设置层级，确保按钮在顶层
-    scrollButton.style.padding = '10px 20px'; // 设置按钮内边距
-    scrollButton.style.border = 'none'; // 去除边框
-    scrollButton.style.borderRadius = '5px'; // 圆角边框
-    scrollButton.style.backgroundColor = '#rgb(205, 200, 187)'; // 背景颜色
-    scrollButton.style.color = '#a68579'; // 文字颜色
-    scrollButton.style.cursor = 'pointer'; // 鼠标样式为手指指针
+            const scrollButton = document.createElement('button'); // 创建按钮元素
+            scrollButton.textContent = 'Auto Scroll'; // 按钮文本内容
+            scrollButton.style.position = 'fixed'; // 固定定位，保持在页面某个位置
+            scrollButton.style.bottom = '20px'; // 距离底部 20px
+            scrollButton.style.right = '20px'; // 距离右侧 20px
+            scrollButton.style.zIndex = '9999'; // 设置层级，确保按钮在顶层
+            scrollButton.style.padding = '10px 20px'; // 设置按钮内边距
+            scrollButton.style.border = 'none'; // 去除边框
+            scrollButton.style.borderRadius = '5px'; // 圆角边框
+            scrollButton.style.backgroundColor = '#rgb(205, 200, 187)'; // 背景颜色
+            scrollButton.style.color = '#a68579'; // 文字颜色
+            scrollButton.style.cursor = 'pointer'; // 鼠标样式为手指指针
 
-    // 将按钮添加到 body 元素中
-    document.body.appendChild(scrollButton);
+            // 将按钮添加到 body 元素中
+            document.body.appendChild(scrollButton);
 
-    // 按钮点击事件监听器
-    scrollButton.addEventListener('click', function () {
-        if (isScrolling) {
-            // 如果正在滚动中，则暂停滚动
-            cancelAnimationFrame(scrollAnimationId);
-            isScrolling = false; // 更新标志位
-            scrollButton.textContent = 'Auto Scroll';
-        } else {
-            // 如果未在滚动中，则开始滚动
-            const totalScrollDistance = document.body.scrollHeight - window.innerHeight; // 页面总滚动距离
-            const scrollDuration = 120 * 1000; // 总滚动时间为 2 分钟
-            const startTime = performance.now(); // 获取当前时间戳
+            // 按钮点击事件监听器
+            scrollButton.addEventListener('click', function () {
+                if (isScrolling) {
+                    // 如果正在滚动中，则暂停滚动
+                    cancelAnimationFrame(scrollAnimationId);
+                    isScrolling = false; // 更新标志位
+                    scrollButton.textContent = 'Auto Scroll';
+                } else {
+                    // 如果未在滚动中，则开始滚动
+                    const totalScrollDistance = document.body.scrollHeight - window.innerHeight; // 页面总滚动距离
+                    const scrollDuration = 120 * 1000; // 总滚动时间为 2 分钟
+                    const startTime = performance.now(); // 获取当前时间戳
 
-            // 定义滚动函数
-            function scroll(time) {
-                const elapsed = time - startTime; // 经过的时间
-                const progress = Math.min(elapsed / scrollDuration, 1); // 进度，最大为 1
+                    // 定义滚动函数
+                    function scroll(time) {
+                        const elapsed = time - startTime; // 经过的时间
+                        const progress = Math.min(elapsed / scrollDuration, 1); // 进度，最大为 1
 
-                const newScrollPosition = currentScrollPosition + progress * (totalScrollDistance - currentScrollPosition);
-                window.scrollTo(0, newScrollPosition); // 根据进度设置滚动位置
+                        const newScrollPosition = currentScrollPosition + progress * (totalScrollDistance - currentScrollPosition);
+                        window.scrollTo(0, newScrollPosition); // 根据进度设置滚动位置
 
-                if (progress < 1) {
-                    // 如果进度小于 1，继续请求下一帧动画
+                        if (progress < 1) {
+                            // 如果进度小于 1，继续请求下一帧动画
+                            scrollAnimationId = requestAnimationFrame(scroll);
+                            isScrolling = true; // 更新标志位
+                        } else {
+                            // 滚动完成时，清空动画 ID 和标志位
+                            scrollAnimationId = null;
+                            isScrolling = false;
+                            scrollButton.textContent = 'Auto Scroll'
+                        }
+                    }
+
+                    // 记录当前的滚动位置
+                    currentScrollPosition = window.scrollY;
+
+                    // 启动第一帧动画
                     scrollAnimationId = requestAnimationFrame(scroll);
                     isScrolling = true; // 更新标志位
-                } else {
-                    // 滚动完成时，清空动画 ID 和标志位
-                    scrollAnimationId = null;
-                    isScrolling = false;
-                     scrollButton.textContent = 'Auto Scroll'
+                    scrollButton.textContent = 'Pause Scroll';
                 }
-            }
-
-            // 记录当前的滚动位置
-            currentScrollPosition = window.scrollY;
-
-            // 启动第一帧动画
-            scrollAnimationId = requestAnimationFrame(scroll);
-            isScrolling = true; // 更新标志位
-            scrollButton.textContent = 'Pause Scroll';
-        }
-    });
-});
+            });
+        });
 
     </script>
 </body>

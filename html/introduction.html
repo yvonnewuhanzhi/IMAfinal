@@ -11,6 +11,22 @@
         rel="stylesheet">
     <title>Document</title>
     <style>
+        h1 {
+            user-select: none;
+        }
+
+        h2 {
+            user-select: none;
+        }
+
+        h3 {
+            user-select: none;
+        }
+
+        p {
+            user-select: none;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -109,7 +125,7 @@
             z-index: 3;
             /* 确保在其他内容之上 */
 
-
+            user-select: none;
 
             padding: 10px 20px;
             /* 内边距 */
@@ -181,7 +197,8 @@
         }
 
         .dialogBox3 {
-            color:#8f8d8d;
+            user-select: none;
+            color: #8f8d8d;
             font-size: 20px;
             /* 初始隐藏 */
             position: fixed;
