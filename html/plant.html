@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant</title>
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;1,200&family=Black+Ops+One&family=Calistoga&family=Kenia&family=Roboto+Condensed:wght@300&family=Skranji&family=UnifrakturCook:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;1,200&family=Black+Ops+One&family=Calistoga&family=Kenia&family=Mooli&family=Roboto+Condensed:wght@300&family=Skranji&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Julee&display=swap" rel="stylesheet">
+    <style>
+        body {
+
+            background-color: #ebe8e3;
+            /* 图像居中 */
+            height: 100vh;
+            /* 设置body元素高度为视口高度，确保图像填满整个屏幕 */
+            cursor: url('../images/plant/Layer\ 2.png'), auto;
+
+        }
+
+
+        html,
+        body {
+            overflow: hidden;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .plant-container {
+            position: absolute;
+            bottom: 35%;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .plant-container img {
+            transform: scale(0.6);
+            transform-origin: bottom center;
+            /*将元素的变换原点设置在元素的底部中央位置*/
+            text-align: center;
+            transition: transform 0.3s;
+            /* 添加过渡效果 */
+        }
+
+        .plant-container img:hover {
+            transform: scale(0.7);
+            /* 放大图像 */
+        }
+
+        .plantpage {
+
+            height: 100vh;
+            /* 设置高度为视口高度 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #h1 {
+            color: #867867;
+            text-align: center;
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 22px;
+            border: none;
+            position: absolute;
+            top: 70%;
+        }
+
+        #h2 {
+            position: absolute;
+            top: 57%;
+            font-size: 15px;
+            color: rgb(205, 200, 187);
+            z-index: 2;
+        }
+
+        #back {
+            background-color: #ebe8e3;
+            color: #000000;
+            text-align: center;
+            font-size: 20px;
+            border: 2px solid #000;
+            /* 将边框颜色设置为黑色 */
+            padding: 10px 20px;
+            position: absolute;
+            left: 4%;
+            top: 5%;
+            z-index: 10;
+        }
+
+        #continue {
+            background-color: #ebe8e3;
+            color: #000000;
+            text-align: center;
+            font-size: 20px;
+            border: 2px solid #000;
+            padding: 10px 20px;
+            position: fixed;
+            bottom: 5%;
+            right: 4%;
+            z-index: 10;
+        }
+
+        #continue:hover {
+            background-color: rgb(132, 115, 94);
+            color: rgb(255, 255, 255);
+            border-color: rgb(132, 115, 94);
+            transition: 0.7s;
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+
+        #back:hover {
+            background-color: rgb(51, 51, 50);
+            color: rgb(255, 255, 255);
+            border-color: rgb(51, 51, 50);
+            transition: 0.7s;
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+        #textContainer {
+            width: 500px;
+            margin-top: 20vh;
+            text-align: center;
+            transform: translate(-10px, 30px);
+            /* Shift the container 20px to the left and 30px down */
+
+        }
+    </style>
+</head>
+
+<body>
+    <button id="back">back</button>
+    <button id="continue">continue</button>
+    <section class="plantpage">
+        <h2 id="h2">MULTIPLE CLICKS TO <br>WATER THE PLANT</h2>
+        <div id="textContainer">
+            <h1 id="h1"></h1>
+        </div>
+        <!-- <h1 id="h1"> My parents were watering the plants in my room</h1> -->
+        <div class="plant-container">
+            <img src="../images/plant/1.png" id="plant1">
+        </div>
+
+
+    </section>
+    <audio id="clickSound" src="../soundeffect/water.mp3"></audio>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var plantImage = document.getElementById("plant1");
+            var currentImage = 1;
+            var totalImages = 7;
+            var clickSound = document.getElementById("clickSound");
+            var h1Texts = [
+                `I've loved growing flowers since I was a kid,
+and now my mom and dad are the ones helping me care for my plants.
+As the plants gradually grew, they gradually regained their spirits.`,
+                `One night, I burrowed into my mom and dad's dreams,
+and they held me tightly, wishing they would never wake up.`,
+                `Mom and Dad were walking in the park,
+I turned into a butterfly and landed on their shoulders,
+they quickly recognized me and talked to me.`,
+                `Mom confided in her friends and coworkers around her,
+and she began to boldly recall stories that belonged between me and her.
+She missed me a lot.`,
+                `Dad took the money he had set aside for me to study abroad and bought a caravan.
+He took mom and drove the caravan to Zhoushan.
+Zhoushan is a very beautiful city with turquoise blue sea, warm villagers and lofty mountains.`,
+                `As time passed, my little flower grew under the watering of my mom and dad,
+and my mom and dad found solace.`
+            ];
+
+
+
+            var h1Index = 0; // Index to track current h1 text
+
+            plantImage.addEventListener("click", function () {
+                if (currentImage < totalImages) {
+                    currentImage++;
+                } else {
+                    currentImage = 1;
+                }
+                plantImage.src = "../images/plant/" + currentImage + ".png";
+
+                // Change h1 text sequentially
+                document.getElementById("h1").textContent = h1Texts[h1Index];
+                h1Index = (h1Index + 1) % h1Texts.length; // Move to the next index
+
+                // Play click sound
+                clickSound.play();
+
+                // Focus back and continue buttons
+                document.getElementById('back').focus();
+                document.getElementById('continue').focus();
+            });
+        });
+
+        document.getElementById('back').addEventListener('click', function () {
+            // Navigate to previous page
+            window.location.href = '../html/room.html';
+        });
+
+        document.getElementById('continue').addEventListener('click', function () {
+            // Navigate to next page
+            window.location.href = '../html/day2.html';
+        });
+    </script>
+</body>
+
+</html>

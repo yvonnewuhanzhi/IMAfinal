@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/addons/p5.sound.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="utf-8" />
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url('../images/bedroom.png');
+            /* 替换 'reborn.png' 为你的背景图像路径 */
+            background-size: cover;
+            /* 图像尺寸自适应 */
+            background-position: center;
+            /* 图像居中 */
+            height: 100vh;
+            /* 设置body元素高度为视口高度，确保图像填满整个屏幕 */
+            cursor: url('../images/mouseicon/1.png'), auto;
+        }
+
+        #page1 {
+            height: 100vh;
+            /* 设置高度为视口高度 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        html,
+        body {
+            overflow: hidden;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        #plant1 {
+            transform: scale(0.4);
+            position: absolute;
+            right: 55%;
+            top: 33%;
+            transition: transform 0.3s;
+        }
+
+        #plant1:hover {
+            transform: scale(0.45);
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+        #plantText {
+            position: absolute;
+            right: 62%;
+            top: 48.5%;
+            font-size: 18px;
+            opacity: 0;
+            /* 初始设置为透明 */
+            transition: opacity 1s ease-in;
+            z-index: 3;
+            /* 渐变效果 */
+            color:#b3a793
+        }
+
+        #dialogBox {
+            position: absolute;
+            right: 5%;
+            top: 10%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: right;
+            font-size: 1.2em;
+            opacity: 0;
+            /* 初始设置为透明 */
+            transition: opacity 1s ease-in;
+            /* 渐变效果 */
+
+        }
+
+        #back {
+            background-color: #ebe8e3;
+            color: #000000;
+            text-align: center;
+            font-size: 20px;
+            border: 2px solid #000;
+            /* 将边框颜色设置为黑色 */
+            padding: 10px 20px;
+
+        }
+
+        #back {
+            position: absolute;
+            left: 4%;
+            top: 5%;
+        }
+
+       
+
+      
+
+        #back:hover {
+            background-color: rgb(51, 51, 50);
+            color: rgb(255, 255, 255);
+            border-color: rgb(51, 51, 50);
+            transition: 0.7s;
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="page1">
+
+        <h1 id="plantText">click here👇</h1>
+        <img id="plant1" src="../images/plant/1.png">
+        <button id="back">back</button>
+       
+
+        <audio id="doorSound" src="../soundeffect/door.mp3" preload="auto"></audio>
+        <div id="dialogBox">
+            <p>(DOOR OPENING) <br>My parents finally walked into the room where I used to live. <br>
+                Sunlight gently streamed through the windows,<br>
+                illuminating the corners that once belonged to me. <br>
+                They cleaned meticulously, <br>
+                cherishing every item as if it were a memory. <br>
+                In this quiet yet nostalgic space, <br>
+                it felt as though time was flowing backwards, <br>
+                with every corner preserving our shared stories.
+            </p>
+        </div>
+    </section>
+    <script>
+        window.onload = function () {
+            // 播放开门声音并设置音量
+            var doorSound = document.getElementById('doorSound');
+            doorSound.volume = 0; // 初始化音量为0
+            doorSound.play();
+            // 实现音量渐入效果
+            var fadeIn = setInterval(function () {
+                if (doorSound.volume < 2) { // 设置目标音量
+                    doorSound.volume += 0.35; // 每次增加的音量
+                } else {
+                    clearInterval(fadeIn);
+                }
+            }, 100); // 每200毫秒调整一次音量
+
+            // 渐显对话框
+            var dialogBox = document.getElementById('dialogBox');
+            setTimeout(function () {
+                dialogBox.style.opacity = 1;
+            }, 500); // 2秒后渐显对话框
+
+            var plantText = document.getElementById('plantText');
+            setTimeout(function () {
+                plantText.style.opacity = 1; // 将 plantText 的 opacity 设置为 1
+            }, 1700); // 2秒后渐显 plantText
+        };
+
+        document.getElementById('plant1').addEventListener('click', function () {
+            // 点击 plant1 后跳转到 plant.html
+            window.location.href = '../html/plant.html';
+        });
+        document.getElementById('back').addEventListener('click', function () {
+            // 点击 plant1 后跳转到 plant.html
+            window.location.href = '../html/day1.html';
+        });
+
+       
+    </script>
+</body>
+
+</html>

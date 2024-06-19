@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/addons/p5.sound.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/day.css">
+    <title>Document</title>
+    <style>
+        p {
+            position: absolute;
+
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.2em;
+            /* opacity: 0; */
+            /* 初始设置为透明 */
+            transition: opacity 1s ease-in;
+            /* 渐变效果 */
+            z-index: 5;
+        }
+
+        #text1p1 {
+            right: 15%;
+            bottom: 95%;
+        }
+
+        #text1p2 {
+            left: 20%;
+            bottom: 65%;
+        }
+
+
+        #text1p3 {
+            right: 20%;
+            bottom: 30%;
+        }
+
+        #text1p4 {
+            right: 10%;
+            bottom: 40%;
+        }
+
+        #day5text {
+            text-align: end;
+            padding: 20px 25px;
+            left: 15%;
+            bottom: -20%;
+        }
+
+        #day23text {
+            right: 15%;
+            bottom: 12%;
+        }
+
+        #day28text {
+            transform: translateY(65vh);
+            right: 40%;
+
+        }
+
+        #day31text {
+            transform: translateY(72vh);
+            right: 5%;
+
+            padding: 20px 25px;
+        }
+
+        #day50text {
+            transform: translateY(92vh);
+            left: 25%;
+
+            padding: 20px 25px;
+        }
+
+        p {
+            opacity: 0;
+            /* 初始设置为透明 */
+            transition: opacity 1s ease-in;
+            /* 渐变效果 */
+        }
+
+        .fade-in {
+            opacity: 1;
+            transition: opacity 1s ease-in;
+        }
+
+
+        /* bubble */
+        #day1bubble1 {
+            position: absolute;
+            left: 40%;
+            top: 30%;
+            z-index: 5;
+        }
+
+        #day1text1 {
+            position: absolute;
+            left: 45%;
+            top: 33%;
+            z-index: 6;
+        }
+
+        #day1bubble2 {
+            position: absolute;
+            left: 30%;
+            top: 81%;
+            z-index: 5;
+            transform: scale(0.55);
+        }
+
+        #day1text2 {
+            position: absolute;
+            left: 37%;
+            top: 85%;
+            z-index: 6;
+            transform: scale(0.6);
+        }
+
+        #day50text1 {
+            transform: scale(0.9);
+            position: absolute;
+            right: 63%;
+            top: 37%;
+            z-index: 6;
+        }
+
+        #day50text2 {
+            transform: scale(0.9);
+            position: absolute;
+            left: 63%;
+            top: 57%;
+            z-index: 6;
+        }
+
+        #day50text3 {
+            transform: scale(0.9);
+            position: absolute;
+            left: 23%;
+            top: 63%;
+            z-index: 6;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="sad" src="../music/sad.mp3"></audio>
+    <audio id="mouseClick" src="../soundeffect/click.mp3"></audio>
+    <section id="firstweek">
+        <button id="back">back</button>
+        <h1 id="what">What does death entail?</h1>
+        <h2 id="scrollDown">SCROLL DOWN</h2>
+        <div class="day1Container">
+            <p id="text1p1">I'm on the other side.</p>
+            <img src="../images/day1/bubble1.png" id="day1bubble1">
+            <img src="../images/day1/papamama.png" id="day1text1">
+            <img src="../images/day1/1.png" id="day11">
+            <p id="text1p2"> if I lift the clouds, I can see my mom and dad.</p>
+            <img src="../images/day1/2.png" id="day12">
+            <p id="text1p3">I miss my mom and dad...<br>
+                But what I didn't expect was that...
+            </p>
+            <img src="../images/day1/3.png" id="day13">
+            <img src="../images/day1/4.png" id="day14">
+            <img src="../images/day1/bubble2.png" id="day1bubble2">
+            <img src="../images/day1/anymore.png" id="day1text2">
+        </div>
+        <div class="day1Container2">
+            <p id="text1p4">They don't mention my name anymore.</p>
+            <img src="../images/day1/bg.png" id="day1bg">
+            <p id="text1p5">
+                They don't come into my room anymore.
+            </p>
+            <img src="../images/day1/me.png" id="day1me">
+
+        </div>
+    </section>
+
+    <section id="day5">
+        <div class="day5Container">
+            <p id="day5text">
+                It was my birthday in July, <br>
+                the gift my dad bought me online arrived late. <br>
+                He left the gift at the door of my room.<br>
+                He didn't have the courage to open my room.</p>
+            <img src="../images/day5/day5.png" id="day5title">
+            <img src="../images/day5/p1.png" id="day51">
+            <img src="../images/day5/p2.png" id="day52">
+            <img src="../images/day5/rabbit.png" id="rabbit">
+
+        </div>
+    </section>
+
+    <section id="day23">
+        <div class="day23Container">
+            <p id="day23text">Mom finally ate her first breakfast,<br> but she didn't have the appetite for lunch.</p>
+            <img src="../images/day23/day23title.png" id="day23title">
+            <img src="../images/day23/p1.png" id="day23-1">
+        </div>
+
+    </section>
+
+    <section id="day28">
+        <div class="day28Container">
+            <p id="day28text">Mom was a teacher <br>It took almost a month for her <br> to stand at the podium again.
+            </p>
+            <img src="../images/day28/p1.png" id="day28-1" onclick="showBubbleAndText('day28bubble1', 'text1')">
+            <img src="../images/day28/p2.png" id="day28-2" onclick="showBubbleAndText('day28bubble2', 'text2')">
+            <img src="../images/day28/mum.png" id="day28-3">
+            <img src="../images/day28/day28.png" id="day28title">
+            <img src="../images/day28/bubble.png" id="day28bubble1" class="bubble">
+            <img src="../images/day28/good.png" id="text1" class="text">
+            <img src="../images/day28/bubble2.png" id="day28bubble2" class="bubble">
+    
+            <img src="../images/day28/idea.png" id="text2" class="text">
+        </div>
+    </section>
+
+
+
+    <section id="day31">
+        <div class="day31Container">
+            <p id="day31text">Once again, Mom's emotions surged.<br>Dad held her tightly, silently weeping himself.</p>
+            <img src="../images/day31/day31.png" id="day31title">
+            <img src="../images/day31/p1.png" id="day31-1">
+
+        </div>
+    </section>
+
+    <section id="day50">
+        <div class="day50Container">
+            <script src="sketch.js"></script>
+            <p id="day50text">Finally, Mom and Dad opened the door to my room</p>
+            <img src="../images/day50/day50.png" id="day50title">
+            <img src="../images/day50/p11.png" id="day50-1">
+            <img src="../images/day50/P2.png" id="day50-2" class="pic">
+            <img src="../images/day50/p31.png" id="day50-3-1">
+            <img src="../images/day50/text1.png" id="day50text1">
+            <img src="../images/day50/text2.png" id="day50text2">
+            <img src="../images/day50/text3.png" id="day50text3">
+            <button id="continue">Enter the room</button>
+        </div>
+    </section>
+
+   
+    <section id="day50"></section>
+    <script src="/js/day.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const bubble1 = document.getElementById("day1bubble1");
+            const text1 = document.getElementById("day1text1");
+            const bubble2 = document.getElementById("day1bubble2");
+            const text2 = document.getElementById("day1text2");
+
+            const text50_1 = document.getElementById("day50text1");
+            const text50_2 = document.getElementById("day50text2");
+            const text50_3 = document.getElementById("day50text3");
+
+            // Initial position and opacity for the animation start
+            bubble1.style.top = "40%"; // Starting position (below the final position)
+            bubble1.style.opacity = 0; // Initial opacity (fully transparent)
+            text1.style.opacity = 0; // Initial opacity for text1
+
+            bubble2.style.top = "91%"; // Starting position (below the final position)
+            bubble2.style.opacity = 0; // Initial opacity (fully transparent)
+            text2.style.opacity = 0; // Initial opacity for text2
+
+            text50_1.style.top = "47%"; // Starting position (below the final position)
+            text50_1.style.opacity = 0; // Initial opacity (fully transparent)
+            text50_2.style.top = "67%"; // Starting position (below the final position)
+            text50_2.style.opacity = 0; // Initial opacity (fully transparent)
+            text50_3.style.top = "73%"; // Starting position (below the final position)
+            text50_3.style.opacity = 0; // Initial opacity (fully transparent)
+
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const callback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target === bubble1) {
+                            bubble1.style.transition = "top 1s ease-in, opacity 1s ease-in";
+                            bubble1.style.top = "30%"; // Final position (as defined in CSS)
+                            bubble1.style.opacity = 1; // Final opacity (fully visible)
+
+                            setTimeout(() => {
+                                text1.style.transition = "opacity 1s ease-in";
+                                text1.style.opacity = 1; // Final opacity for text1
+                            }, 1000); // Delay of 1 second
+                        } else if (entry.target === bubble2) {
+                            bubble2.style.transition = "top 1s ease-in, opacity 1s ease-in";
+                            bubble2.style.top = "81%"; // Final position (as defined in CSS)
+                            bubble2.style.opacity = 1; // Final opacity (fully visible)
+
+                            setTimeout(() => {
+                                text2.style.transition = "opacity 1s ease-in";
+                                text2.style.opacity = 1; // Final opacity for text2
+                            }, 1000); // Delay of 1 second
+                        } else if (entry.target === text50_1) {
+                            text50_1.style.transition = "top 1s ease-in, opacity 1s ease-in";
+                            text50_1.style.top = "37%"; // Final position (as defined in CSS)
+                            text50_1.style.opacity = 1; // Final opacity (fully visible)
+                        } else if (entry.target === text50_2) {
+                            text50_2.style.transition = "top 1s ease-in, opacity 1s ease-in";
+                            text50_2.style.top = "57%"; // Final position (as defined in CSS)
+                            text50_2.style.opacity = 1; // Final opacity (fully visible)
+                        } else if (entry.target === text50_3) {
+                            text50_3.style.transition = "top 1s ease-in, opacity 1s ease-in";
+                            text50_3.style.top = "63%"; // Final position (as defined in CSS)
+                            text50_3.style.opacity = 1; // Final opacity (fully visible)
+                        }
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(callback, options);
+
+            observer.observe(bubble1);
+            observer.observe(bubble2);
+            observer.observe(text50_1);
+            observer.observe(text50_2);
+            observer.observe(text50_3);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+    let scrollAnimationId = null; // 存储 requestAnimationFrame 的 ID
+    let isScrolling = false; // 标志位，表示当前是否正在滚动中
+    let currentScrollPosition = 0; // 记录当前的滚动位置
+
+    const scrollButton = document.createElement('button'); // 创建按钮元素
+    scrollButton.textContent = 'Auto Scroll'; // 按钮文本内容
+    scrollButton.style.position = 'fixed'; // 固定定位，保持在页面某个位置
+    scrollButton.style.bottom = '20px'; // 距离底部 20px
+    scrollButton.style.right = '20px'; // 距离右侧 20px
+    scrollButton.style.zIndex = '9999'; // 设置层级，确保按钮在顶层
+    scrollButton.style.padding = '10px 20px'; // 设置按钮内边距
+    scrollButton.style.border = 'none'; // 去除边框
+    scrollButton.style.borderRadius = '5px'; // 圆角边框
+    scrollButton.style.backgroundColor = '#rgb(205, 200, 187)'; // 背景颜色
+    scrollButton.style.color = '#a68579'; // 文字颜色
+    scrollButton.style.cursor = 'pointer'; // 鼠标样式为手指指针
+
+    // 将按钮添加到 body 元素中
+    document.body.appendChild(scrollButton);
+
+    // 按钮点击事件监听器
+    scrollButton.addEventListener('click', function () {
+        if (isScrolling) {
+            // 如果正在滚动中，则暂停滚动
+            cancelAnimationFrame(scrollAnimationId);
+            isScrolling = false; // 更新标志位
+            scrollButton.textContent = 'Auto Scroll';
+        } else {
+            // 如果未在滚动中，则开始滚动
+            const totalScrollDistance = document.body.scrollHeight - window.innerHeight; // 页面总滚动距离
+            const scrollDuration = 120 * 1000; // 总滚动时间为 2 分钟
+            const startTime = performance.now(); // 获取当前时间戳
+
+            // 定义滚动函数
+            function scroll(time) {
+                const elapsed = time - startTime; // 经过的时间
+                const progress = Math.min(elapsed / scrollDuration, 1); // 进度，最大为 1
+
+                const newScrollPosition = currentScrollPosition + progress * (totalScrollDistance - currentScrollPosition);
+                window.scrollTo(0, newScrollPosition); // 根据进度设置滚动位置
+
+                if (progress < 1) {
+                    // 如果进度小于 1，继续请求下一帧动画
+                    scrollAnimationId = requestAnimationFrame(scroll);
+                    isScrolling = true; // 更新标志位
+                } else {
+                    // 滚动完成时，清空动画 ID 和标志位
+                    scrollAnimationId = null;
+                    isScrolling = false;
+                     scrollButton.textContent = 'Auto Scroll'
+                }
+            }
+
+            // 记录当前的滚动位置
+            currentScrollPosition = window.scrollY;
+
+            // 启动第一帧动画
+            scrollAnimationId = requestAnimationFrame(scroll);
+            isScrolling = true; // 更新标志位
+            scrollButton.textContent = 'Pause Scroll';
+        }
+    });
+});
+
+    </script>
+</body>
+
+</html>

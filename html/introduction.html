@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh;
+            /* This ensures the body height is double the viewport height for two sections */
+            cursor: url('../images/mouseicon/1.png'), auto;
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .small-container {
+            transform: scale(0.7);
+            position: relative;
+            top: -27%;
+            left: -17%;
+        }
+
+        #purple {
+            position: absolute;
+            z-index: 4;
+            /* Highest layer */
+            transform: translate(150px, 500px);
+            transition: transform 0.1s;
+            /* Smooth transition */
+        }
+
+        #small {
+            position: absolute;
+            z-index: 3;
+            /* Second highest layer */
+            transition: transform 0.1s;
+        }
+
+        #small:hover {
+            transform: scale(1.1);
+            /* 放大图像 */
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+        #pink {
+            position: absolute;
+            z-index: 2;
+            /* Third highest layer */
+            transform: translate(-40px, 100px);
+            transition: transform 0.05s;
+        }
+
+        #blue {
+            position: absolute;
+            z-index: 1;
+            /* Lowest layer */
+            transform: translate(140px, -100px);
+            transition: transform 0.1s;
+        }
+
+        .dialogBox1 {
+            position: fixed;
+            top: 300px;
+            /* 距离顶部的距离 */
+            left: 450px;
+            /* 距离左侧的距离 */
+            z-index: 3;
+            /* 确保在其他内容之上 */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* 背景颜色 */
+            border: 1px solid #000;
+            /* 边框样式 */
+            padding: 10px 20px;
+            /* 内边距 */
+            border-radius: 2px;
+            /* 边框圆角 */
+            opacity: 0;
+            /* 初始设置为透明 */
+            transition: opacity 1s ease-in;
+            /* 渐变效果 */
+
+        }
+
+        .dialogBox2 {
+            position: fixed;
+            top: 600px;
+            /* 距离顶部的距离 */
+            left: 950px;
+            /* 距离左侧的距离 */
+            z-index: 3;
+            /* 确保在其他内容之上 */
+
+
+
+            padding: 10px 20px;
+            /* 内边距 */
+            border-radius: 2px;
+            /* 边框圆角 */
+            opacity: 0;
+            /* 初始设置为透明 */
+            transition: opacity 1s ease-in;
+            /* 渐变效果 */
+
+        }
+
+        .big-container {
+            transform: scale(0.8);
+            position: absolute;
+            transition: transform 0.1s;
+            transform: translate(100px, -50px);
+
+
+
+        }
+
+        #big {
+            position: absolute;
+            z-index: 4;
+            transform: translate(-850px);
+        }
+
+        #sky {
+            position: absolute;
+            transform: translate(-850px);
+            z-index: 1;
+        }
+
+        #me {
+
+            /* 初始隐藏 */
+            position: absolute;
+            transform: translate(-640px, 370px);
+            z-index: 2;
+
+            opacity: 0;
+            /* 初始透明度 */
+        }
+
+        @keyframes moveUpDown {
+            0% {
+                top: 0;
+            }
+
+            50% {
+                top: calc(100vh - 950px);
+            }
+
+            100% {
+                top: 0;
+            }
+        }
+
+        #ring {
+            position: absolute;
+            transform: translate(-540px, 340px);
+            z-index: 5;
+            transition: transform 0.1s;
+            cursor: pointer;
+            /* 添加鼠标指针 */
+            animation: moveUpDown 4s infinite;
+            /* 4s 是动画持续时间 */
+        }
+
+        .dialogBox3 {
+            color:#8f8d8d;
+            font-size: 20px;
+            /* 初始隐藏 */
+            position: fixed;
+            top: 300px;
+            /* 距离顶部的距离 */
+            left: 1050px;
+            /* 距离左侧的距离 */
+            z-index: 3;
+            /* 确保在其他内容之上 */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* 背景颜色 */
+            /* border: 1px solid #000; */
+            /* 边框样式 */
+            padding: 10px 20px;
+            /* 内边距 */
+            /* border-radius: 2px; */
+
+            opacity: 0;
+            /* 初始透明度 */
+            line-height: 1.5;
+        }
+
+        #back,
+        #continue {
+            background-color: #ffffff;
+            color: #000000;
+            text-align: center;
+            font-size: 20px;
+            border: 2px solid #000;
+            /* 将边框颜色设置为黑色 */
+            padding: 10px 20px;
+
+        }
+
+        #back {
+            position: absolute;
+            left: 4%;
+            top: 5%;
+        }
+
+        #continue {
+            position: absolute;
+            bottom: -50%;
+            right: 5%;
+            opacity: 0;
+        }
+
+        #continue:hover {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border-color: rgb(0, 0, 0);
+            transition: 0.7s;
+
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+        #back:hover {
+            background-color: rgb(51, 51, 50);
+            color: rgb(255, 255, 255);
+            border-color: rgb(51, 51, 50);
+            transition: 0.7s;
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+        #ring:hover {
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+        #page2 {
+            cursor: url('../images/mouseicon/1.png'), auto;
+        }
+    </style>
+</head>
+
+<body>
+    <audio src="../music/bgm1.mp3" id="bgm1"></audio>
+
+    <section id="page1">
+        <button id="back">back</button>
+
+        <div class="dialogBox1">
+            I was slipping away.<br>
+            That's what it felt like.
+        </div>
+        <div class="dialogBox2">
+            ← Click this pavilion.
+        </div>
+        <div class="small-container">
+            <img src="../images/introduction/smallpavilion/smallpurple.png" id="purple">
+            <img src="../images/introduction/smallpavilion/smallpavilion.png" id="small" onclick="scrollToBottom()">
+            <img src="../images/introduction/smallpavilion/blue.png" id="blue">
+            <img src="../images/introduction/smallpavilion/pink.png" id="pink">
+
+        </div>
+    </section>
+
+    <section id="page2">
+        <div class="dialogBox3">
+            Hello, my friend.<br>
+
+            My name is Lily.<br>
+            I died of brain cancer at 14.<br>
+            From beyond, I watched my parents' world,<br>
+            filled with their love and sorrow.<br>
+            Let me share this unseen story with you.
+
+        </div>
+        <div class="big-container">
+            <img src="../images/introduction/bigpavilion/bigpavilion.png" id="big">
+            <img src="../images/introduction/bigpavilion/ring.png" id="ring">
+            <img src="../images/introduction/bigpavilion/me.png" id="me">
+            <img src="../images/introduction/bigpavilion/sky.png" id="sky">
+        </div>
+        <button id="continue">continue</button>
+    </section>
+
+    <script>
+
+        window.onload = function () {
+            // 播放开门声音并设置音量
+            var music1 = document.getElementById('bgm1');
+            music1.volume = 0.5; // 初始化音量为0
+            music1.play();
+            music1.addEventListener('ended', function () {
+                music1.currentTime = 0; // 将音乐播放时间重置为 0
+                music1.play(); // 再次播放音乐
+            });
+            // 0.5秒后渐显对话框
+            var dialogBox1 = document.querySelector('.dialogBox1');
+            setTimeout(function () {
+                dialogBox1.style.opacity = 1;
+            }, 1000); // 1秒后渐显
+            var dialogBox2 = document.querySelector('.dialogBox2');
+            setTimeout(function () {
+                dialogBox2.style.opacity = 1;
+            }, 1500); // 1秒后渐显
+
+            window.addEventListener('scroll', function () {
+                var scrollDistance = window.scrollY;
+
+                // 如果滚动距离大于或等于100vh，隐藏对话框
+                if (scrollDistance >= window.innerHeight / 2) {
+                    var dialogBox1 = document.querySelector('.dialogBox1');
+                    var dialogBox2 = document.querySelector('.dialogBox2');
+                    dialogBox1.style.transition = 'opacity 0.2s ease-out'; // 添加过渡效果
+                    dialogBox2.style.transition = 'opacity 0.2s ease-out'; // 添加过渡效果
+                    dialogBox1.style.opacity = 0;
+                    dialogBox2.style.opacity = 0;
+
+
+                }
+                if (scrollDistance <= 0) {
+                    var dialogBox1 = document.querySelector('.dialogBox1');
+                    var dialogBox2 = document.querySelector('.dialogBox2');
+                    dialogBox1.style.opacity = 1;
+                    dialogBox2.style.opacity = 1;
+                    dialogBox3.style.transition = 'opacity 0.2s ease-out'; // 添加过渡效果
+                    dialogBox3.style.opacity = 0;
+                    me.style.opacity = 0;
+                }
+            });
+            // 获取ring元素
+            const ring = document.getElementById('ring');
+            // 获取me元素
+            const me = document.getElementById('me');
+            // 获取dialogBox3元素
+            const dialogBox3 = document.querySelector('.dialogBox3');
+            const continue1 = document.getElementById('continue');
+            // 添加点击事件监听器
+            ring.addEventListener('click', function () {
+                dialogBox3.style.transition = 'opacity 0.5s ease-out'; // 添加过渡效果
+                me.style.transition = 'opacity 0.2s ease-out'; // 添加过渡效果
+                dialogBox3.style.opacity = 1;
+                me.style.opacity = 1;
+                continue1.style.opacity = 1;
+            });
+        }
+
+        document.addEventListener('mousemove', function (event) {
+            const purple = document.getElementById('purple');
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            const offsetXPurple = (centerX - mouseX) * 0.02; // Adjust multiplier for desired effect
+            const offsetYPurple = (centerY - mouseY) * 0.02; // Adjust multiplier for desired effect
+
+            purple.style.transform = `translate(${150 + offsetXPurple}px, ${500 + offsetYPurple}px)`;
+        });
+
+        document.addEventListener('mousemove', function (event) {
+            const pink = document.getElementById('pink');
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            const offsetX = (mouseX - centerX) * 0.03; // Adjust multiplier for desired effect
+            const offsetY = (mouseY - centerY) * 0.03; // Adjust multiplier for desired effect
+
+            pink.style.transform = `translate(-40px, 100px) translate(${offsetX}px, ${offsetY}px)`;
+        });
+        document.addEventListener('mousemove', function (event) {
+            const purple = document.getElementById('purple');
+            const blue = document.getElementById('blue');
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            const offsetXPurple = (centerX - mouseX) * 0.02; // Adjust multiplier for desired effect
+            const offsetYPurple = (centerY - mouseY) * 0.02; // Adjust multiplier for desired effect
+
+            purple.style.transform = `translate(${150 + offsetXPurple}px, ${500 + offsetYPurple}px)`;
+
+            const offsetYBlue = (mouseY - centerY) * 0.03; // Adjust multiplier for desired effect
+            blue.style.transform = `translate(140px, -100px) translateY(${offsetYBlue}px)`;
+        });
+
+        // 获取ring元素
+        document.addEventListener('mousemove', function (event) {
+            const sky = document.getElementById('sky');
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            const offsetX = (mouseX - centerX) * 0.05; // 调整移动速度
+            const offsetY = (mouseY - centerY) * 0.02; // 调整移动速度
+
+            sky.style.transform = `translate(-850px) translate(${offsetX}px, ${offsetY}px)`;
+        });
+        // 获取me元素
+        const me = document.getElementById('me');
+
+        // 添加鼠标移动事件监听器
+        document.addEventListener('mousemove', function (event) {
+            // 获取鼠标当前位置
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // 计算me应该移动的距离
+            const offsetX = -(mouseX - 640) * 0.05; // X方向上的移动
+            const offsetY = -(mouseY - 370) * 0.001; // Y方向上的移动
+
+            // 应用变换
+            me.style.transform = ` translate(-640px, 370px) translate(${offsetX}px, ${offsetY}px)`;
+        });
+        function scrollToBottom() {
+            // 将页面滚动到底部
+            window.scrollTo({
+                top: document.documentElement.scrollHeight - window.innerHeight,
+                behavior: 'smooth' // 平滑滚动
+            });
+        }
+        document.getElementById('back').addEventListener('click', function () {
+            // 点击 plant1 后跳转到 plant.html
+            window.location.href = '../html/memory.html';
+        });
+
+        document.getElementById('continue').addEventListener('click', function () {
+            // 点击 plant1 后跳转到 plant.html
+            window.location.href = '../html/day1.html';
+        });
+    </script>
+</body>
+
+</html>

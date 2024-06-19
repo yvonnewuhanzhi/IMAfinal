@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 350vh;
+            background-color: #ebe7e2;
+            overflow-x: hidden;
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 100;
+            font-style: normal;
+            cursor: url('../images/mouseicon/1.png'), auto;
+        }
+
+        #cry {
+
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            transform: scale(0.75);
+            transform-origin: bottom left;
+            opacity: 0;
+            /* 初始透明度为0 */
+            transition: opacity 0.5s ease;
+            /* 添加透明度过渡效果 */
+        }
+
+        #page1,
+        #page2,
+        #page3 {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #page1 h1 {
+            /* 用于控制h1的透明度 */
+            opacity: 0;
+            animation: fadeIn 4s ease forwards;
+        }
+
+        #page1 h2 {
+            position: absolute;
+            bottom: 10px;
+            color: rgb(205, 200, 187)
+        }
+
+        #page3 h2 {
+            position: absolute;
+            top: 290vh;
+            color: rgb(205, 200, 187)
+        }
+
+        @keyframes fadeIn {
+
+            /* 渐显动画 */
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        #page2 {
+            height: 100vh;
+        }
+
+        #page3 {
+            height: 100vh;
+        }
+
+        .draggable {
+            position: absolute;
+            right: 20px;
+            top: 50px;
+            cursor: move;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        #p1 {
+            top: 263vh;
+            z-index: 1;
+            transform: scale(0.75);
+        }
+
+        #p2 {
+            top: 263vh;
+            z-index: 2;
+            transform: scale(0.75);
+        }
+
+        #p3 {
+            top: 263vh;
+            z-index: 3;
+            transform: scale(0.75);
+        }
+
+        #p4 {
+            top: 263vh;
+            z-index: 4;
+            transform: scale(0.75);
+        }
+
+        #p1,
+        #p2,
+        #p3,
+        #p4:hover {
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+        #scrollDown {
+            opacity: 1;
+            /* 初始透明度为1 */
+            transition: opacity 1s ease;
+            /* 添加透明度过渡效果 */
+        }
+
+        #scrollDown.hidden {
+            opacity: 0;
+            /* 设置透明度为0，使元素渐渐消失 */
+        }
+
+        #back,
+        #continue {
+            background-color: #ebe7e2;
+            color: #000000;
+            text-align: center;
+            font-size: 20px;
+            border: 2px solid #000;
+            /* 将边框颜色设置为黑色 */
+            padding: 10px 20px;
+
+        }
+
+        #back {
+            position: absolute;
+            left: 4%;
+            top: 5%;
+        }
+
+        #continue {
+            position: absolute;
+            top: 340vh;
+            right: 5%;
+
+        }
+
+        #continue:hover {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border-color: rgb(0, 0, 0);
+            transition: 0.7s;
+
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+        #back:hover {
+            background-color: rgb(51, 51, 50);
+            color: rgb(255, 255, 255);
+            border-color: rgb(51, 51, 50);
+            transition: 0.7s;
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="sad2" src="../music/sad2.mp3"></audio>
+    <section id="page1">
+        <button id="back">back</button>
+        <h1>When I was dying,<br>I felt myself slowly rise and eventually float to the ceiling of the hospital room,<br>
+             overlooking my body and the busy bodies of the doctors.</h1>
+        <h2 id="scrollDown">SCROLL DOWN</h2>
+    </section>
+    <section id="page2">
+        <h1>The last thing I lost was my hearing.<br>I could hear my father calling out for me and my mother sobbing.</h1>
+        <img src="../images/memory/从选区.png" id="cry">
+    </section>
+    <section id="page3">
+        <h1>At the same time, what came into my mind was my past life.
+        </h1>
+        <h2>DRAG THE PHOTOS <br>TO VIEW MY LIFE MEMOMRIES →</h2>
+        <img src="../images/memory/图层 19-1.png" id="p2" class="draggable">
+        <img src="../images/memory/图层 19-2.png" id="p3" class="draggable">
+        <img src="../images/memory/图层 19-3.png" id="p4" class="draggable">
+        <img src="../images/memory/图层 19.png" id="p1" class="draggable">
+        <button id="continue">continue</button>
+    </section>
+    <audio src="../soundeffect/photo.mp3" id="photoSound"></audio>
+
+    <script>
+
+        window.onload = function () {
+
+            var music1 = document.getElementById('sad2');
+            music1.volume = 0.5; // 初始化音量为0
+            music1.play();
+            music1.addEventListener('ended', function () {
+                music1.currentTime = 0; // 将音乐播放时间重置为 0
+                music1.play(); // 再次播放音乐
+            });
+        };
+
+        const scrollDown = document.getElementById('scrollDown');
+        window.addEventListener('scroll', function () {
+            const scrollPosition = window.scrollY; // 获取滚动位置
+            const windowHeight = window.innerHeight; // 获取窗口高度
+            // 如果滚动位置超过窗口高度，隐藏滚动提示
+            if (scrollPosition >= windowHeight / 2) {
+                scrollDown.classList.add('hidden');
+            }
+        });
+        // Function to make elements draggable
+        // Function to make elements draggable
+        function makeDraggable(element) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            element.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // Get the mouse cursor position at startup
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // Call a function whenever the cursor moves
+                document.onmousemove = elementDrag;
+                element.style.cursor = 'url("../images/mouseicon/3.png"), auto';
+
+                // Increase z-index to ensure the selected element is on top
+                increaseZIndex(element);
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // Calculate the new cursor position
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // Set the element's new position
+                element.style.top = (element.offsetTop - pos2) + "px";
+                element.style.left = (element.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                // Stop moving when mouse button is released
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+        // Increase z-index of the selected element
+        function increaseZIndex(element) {
+            const draggables = document.querySelectorAll('.draggable');
+            let highestZIndex = 0;
+
+            // Find the current highest z-index among draggable elements
+            draggables.forEach(draggable => {
+                const zIndex = parseInt(window.getComputedStyle(draggable).zIndex, 10);
+                if (zIndex > highestZIndex) {
+                    highestZIndex = zIndex;
+                }
+            });
+
+            // Set the selected element's z-index to the highest + 1
+            element.style.zIndex = highestZIndex + 1;
+        }
+
+        // Apply draggable function to each image
+        const draggables = document.querySelectorAll('.draggable');
+        draggables.forEach(makeDraggable);
+
+        // Play sound on mousedown
+        document.addEventListener("DOMContentLoaded", function () {
+            const photoSound = document.getElementById('photoSound');
+
+            draggables.forEach(draggable => {
+                draggable.addEventListener("mousedown", function () {
+                    photoSound.play();
+                });
+            });
+        });
+
+
+        // 监听页面滚动事件
+        window.addEventListener('scroll', function () {
+            const cry = document.getElementById('cry');
+            const scrollPosition = window.scrollY; // 获取滚动位置
+            const windowHeight = window.innerHeight; // 获取窗口高度
+            // 如果滚动位置超过窗口高度，显示cry元素，否则隐藏
+            if (scrollPosition >= windowHeight) {
+                cry.style.opacity = '1';
+            } else {
+                cry.style.opacity = '0';
+            }
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const p1 = document.getElementById("p1");
+            const p2 = document.getElementById("p2");
+            const p3 = document.getElementById("p3");
+            const p4 = document.getElementById("p4");
+            const photoSound = document.getElementById('photoSound');
+
+            p1.addEventListener("mousedown", function () {
+                photoSound.play();
+            });
+
+            p2.addEventListener("mousedown", function () {
+                photoSound.play();
+            });
+
+            p3.addEventListener("mousedown", function () {
+                photoSound.play();
+            });
+
+            p4.addEventListener("mousedown", function () {
+                photoSound.play();
+            });
+        });
+        document.getElementById('back').addEventListener('click', function () {
+            // 点击 plant1 后跳转到 plant.html
+            window.location.href = '../html/steps.html';
+        });
+        document.getElementById('continue').addEventListener('click', function () {
+
+            window.location.href = '../html/introduction.html';
+        });
+
+      
+    </script>
+</body>
+
+</html>

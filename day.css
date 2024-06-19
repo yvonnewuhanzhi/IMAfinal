@@ -1,0 +1,607 @@
+body {
+    background-color: #ebe7e2;
+    margin: 0;
+    padding: 0;
+    cursor: url('../images/mouseicon/1.png'), auto;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    transition: background-color 1s ease; /* 添加背景颜色过渡效果 */
+}
+
+body.brown-bg {
+    background-color: #b3a092; /* 棕色背景 */
+}
+
+#what {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    font-size: 200px;
+    color: rgb(205, 200, 187);
+    transition: opacity 1s ease;
+}
+
+#scrollDown {
+    position: absolute;
+    bottom: 10px;
+    color: rgb(205, 200, 187);
+
+    transition: opacity 1s ease;
+}
+
+
+
+/* ------------------1st week------------------ */
+#firstweek {
+    cursor: url('../images/mouseicon/1.png'), auto;
+    margin-left: 10vh;
+}
+
+.day1Container,
+.day1Container2,
+.day5Container,
+.day23Container {
+    position: relative;
+    margin: 50vh 0;
+    /* 设置上下间隔 */
+}
+
+.day1Container img,
+.day1Container2 img,
+.day5Container img,
+.day23Container img {
+    transform: scale(0.8);
+    display: block;
+    margin: 2px;
+}
+
+
+#day13 {
+    position: absolute;
+    top: 70%;
+    left: -100%;
+    /* 初始位置在视图左侧外 */
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    transition: left 1s ease-out;
+    /* 平滑移动 */
+}
+
+/* 当元素滑动进入时设置到最终位置 */
+#day13.visible {
+    left: 30%;
+}
+
+
+#day12 {
+    position: relative;
+    animation: slide2 5s infinite alternate ease-in-out;
+    transform: scale(0.4);
+
+}
+
+#day11 {
+    position: relative;
+    /* 使其相对于自身位置滑动 */
+    transform: scale(0.4);
+    animation: slide 5s infinite alternate ease-in-out;
+    user-select: none;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100px);
+        /* 滑动距离 */
+    }
+}
+
+@keyframes slide2 {
+    0% {
+        transform: translateX(100px);
+    }
+
+    100% {
+        transform: translateX(0);
+        /* 滑动距离 */
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* -------------------day1Container--------------------- */
+.day1Container {
+    position: relative;
+    transform: translateY(0);
+    /* 不再需要transform */
+}
+
+#day1bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    /* 缩小 0.8 并居中 */
+    z-index: 0;
+}
+
+#day1me {
+    position: absolute;
+    top: 50%;
+    right: 30%;
+    transform: translateY(-50%) scale(0.8);
+    /* 缩小 0.8 并居中 */
+    z-index: 1;
+}
+
+#day1parent {
+    body {
+        background-color: #ebe7e2;
+        margin: 0;
+        padding: 0;
+    }
+
+    #what {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        font-size: 200px;
+        color: rgb(205, 200, 187);
+        transition: opacity 1s ease;
+    }
+
+    #scrollDown {
+        position: absolute;
+        bottom: 10px;
+        color: rgb(205, 200, 187);
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+
+    #scrollDown.hidden {
+        opacity: 0;
+    }
+
+    /* ------------------1st week------------------ */
+
+
+
+
+    .day1Container img,
+    .day1Container2 img,
+    .day5Container img,
+    .day23Container img {
+        transform: scale(0.8);
+        /* display: block;
+        margin: 2px; */
+    }
+
+    #day13 {
+        position: absolute;
+        top: 70%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
+
+    #day12 {
+        position: relative;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* -------------------day1Container2--------------------- */
+    .day1Container2 {
+        position: relative;
+        height: 300vh;
+        margin-top: 120vh;
+
+
+    }
+
+    #day1bg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        /* 缩小 0.8 并居中 */
+        z-index: 0;
+        transition: transform 0.1s;
+    }
+
+    #day1me {
+        position: absolute;
+        top: 50%;
+        right: 30%;
+        transform: translateY(-50%) scale(0.8);
+        /* 缩小 0.8 并居中 */
+        z-index: 1;
+        transition: transform 0.1s;
+    }
+
+
+
+    /* -------------------day5--------------------- */
+
+    /* #day5 {
+        background-color: pink;
+        border: 10px dashed yellow;
+    } */
+
+    /* .day5Container {
+        position: relative;
+        height:100vh;
+        top: 500vh; /* 将原来的 100vh 改为 150vh */
+    /* transform: translateY(0); 不再需要 transform */
+    /* background-color: yellow; */
+    /* } */
+
+
+
+  
+
+    
+
+    /* -------------------day23--------------------- */
+    .day23Container {
+        margin-top: 50vh;
+        /* 向下平移 100vh */
+        /* transform: translateY(0); */
+        /* 不再需要transform */
+    }
+
+    #day23-1:hover {
+        transform: scale(1.1);
+        /* 增加缩放效果 */
+        transition: transform 0.1s;
+        cursor: url('./images/mouseicon/2.png'), auto;
+    }
+
+    #day23title {
+        position: absolute;
+        top: 5%;
+        z-index: 2;
+    }
+
+    #day23-1 {
+        position: relative;
+        top: 20%;
+    }
+
+
+}
+
+/* -------------------day5--------------------- */
+.day5Container {
+    /* background-color: rgb(200, 176, 146); */
+    position: relative;
+    margin-top: 150vh;
+    transform: translateY(0);
+}
+
+#day5title {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    /* day5title 的 z-index 最高 */
+}
+
+#day51 {
+    left: 50%;
+    /* 左侧定位 */
+    z-index: 1;
+    /* day51 的 z-index 低于 day5title */
+    animation: slide3 5s infinite alternate ease-in-out;
+}
+
+#day52 {
+    position: absolute;
+    top: 0%;
+    right: 10%;
+    transform: scale(0.7) translateX(50%) translateY(-50%);
+    z-index: 1;
+    animation: slideAnimation 5s infinite alternate ease-in-out;
+}
+
+@keyframes slideAnimation {
+    0%, 100% {
+        transform: scale(0.7) translateX(7%) ;
+    }
+    50% {
+        transform: scale(0.7) translateX(-7%);
+    }
+}
+
+
+
+#rabbit {
+    position: absolute;
+    bottom: -40%;
+    right: 30%;
+    z-index: 3;
+    /* rabbit 的 z-index 最低 */
+    transition: transform 0.3s;
+    animation: slide5 5s infinite alternate ease-in-out;
+
+}
+
+@keyframes slide5 {
+    0% {
+        transform: translateY(-50px) scale(0.9); /* 初始位置并缩小图像 */
+    }
+    100% {
+        transform: translateY(0) scale(0.9); /* 滑动并缩小图像 */
+    }
+}
+
+
+/* -------------------day23--------------------- */
+.day23Container {
+    margin-top: 50vh;
+    /* 向下平移 100vh */
+    transform: translateY(0);
+    /* 不再需要transform */
+    animation: slide5 5s infinite alternate ease-in-out;
+}
+
+.day23Container img {
+    transform: scale(0.9);
+}
+
+#day23title {
+    position: absolute;
+    top: 5%;
+    z-index: 2;
+}
+
+#day23-1 {
+    position: relative;
+    top: 20%;
+}
+
+/* -------------------day28--------------------- */
+.day28Container img {
+    transform: scale(0.8);
+}
+
+.day28Container {
+    margin-top: 1vh;
+}
+
+#day28-1 {
+    position: absolute;
+    transition: transform 0.3s;
+    right: 50%;
+    z-index: 0;
+}
+
+#day28-1:hover {
+    transform: scale(0.9);
+    cursor: url('./images/mouseicon/2.png'), auto;
+}
+
+#day28-2:hover {
+    transform: scale(0.9);
+    cursor: url('./images/mouseicon/2.png'), auto;
+}
+
+#day28-2 {
+    position: absolute;
+    right: 2%;
+    margin-top: 10%;
+    z-index: 0;
+    transition: transform 0.3s;
+}
+
+#day28-3 {
+    position: absolute;
+    right: 32%;
+    z-index: 2;
+}
+
+#day28title {
+    position: absolute;
+    margin-top: -2%;
+    right: 50%;
+    z-index: 3;
+}
+
+#day28bubble1 {
+    position: absolute;
+    z-index: 3;
+    right: 65%;
+    transform: translateY(40vh);
+}
+
+#day28bubble2 {
+    position: absolute;
+    z-index: 3;
+    left: 65%;
+    transform: translateY(5vh);
+}
+
+.bubble {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.bubble.show {
+    opacity: 1;
+}
+
+.text {
+    z-index:6;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out 1s;
+    /* Add 1s delay for the text appearance */
+}
+
+#text1 {
+    left: 68%;
+    /* Adjust as needed */
+    transform: translateY(53vh);
+    /* Adjust as needed */
+    z-index: 4;
+    /* Ensure the text is above the bubbles */
+}
+
+#text2 {
+    right: 68%;
+    /* Adjust as needed */
+    transform: translateY(10vh);
+    /* Adjust as needed */
+    z-index: 4;
+    /* Ensure the text is above the bubbles */
+}
+
+
+/* -------------------day31--------------------- */
+.day31Container {
+    margin-top: 200vh;
+
+}
+
+.day31Container img {
+    transform: scale(0.8);
+}
+
+#day31title {
+    position: absolute;
+    z-index: 3;
+    left: 6%;
+    transform: scale(0.8);
+}
+
+
+
+/* -------------------day50--------------------- */
+.day50Container img {
+    transform: scale(0.7);
+    transition: transform 0.3s;
+    /* 添加过渡效果 */
+    user-select: none;
+}
+
+.day50Container {
+    position: relative;
+    height: 300vh;
+}
+
+#day50title {
+    position: absolute;
+    top: -5%;
+    z-index: 3;
+}
+
+#day50-1 {
+    position: absolute;
+    top: 10%;
+    z-index: 2;
+    
+}
+
+#day50-2 {
+    position: absolute;
+    top: 30%;
+    transition: transform 0.3s;
+    animation: slide3 5s infinite alternate ease-in-out;
+    transform:scale(0.7);
+    z-index:3;
+}
+@keyframes slide3 {
+    0% {
+        transform: translateX(0) scale(0.7); /* 初始位置并缩小图像 */
+    }
+    100% {
+        transform: translateX(50px) scale(0.7); /* 滑动并缩小图像 */
+    }
+}
+
+
+#day50-3-1 {
+    position: absolute;
+    top: 60%;
+    right: 10%;
+    transition: transform 0.3s;
+    /* 添加过渡效果 */
+}
+
+
+
+
+/* --------------back continue button----------------- */
+#back,
+#continue {
+
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+    border: 2px solid #000;
+    /* 将边框颜色设置为黑色 */
+    padding: 10px 20px;
+    z-index:10;
+
+}
+
+#back {
+    background-color: #ebe7e2;
+    position: absolute;
+    left: 4%;
+    top: 5%;
+}
+
+#continue {
+    background-color: #ffffff;
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+
+}
+
+#continue:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-color: rgb(0, 0, 0);
+    transition: 0.7s;
+
+    cursor: url('../images/mouseicon/2.png'), auto;
+}
+
+#back:hover {
+    background-color: rgb(51, 51, 50);
+    color: rgb(255, 255, 255);
+    border-color: rgb(51, 51, 50);
+    transition: 0.7s;
+    cursor: url('../images/mouseicon/2.png'), auto;
+}
+
+/* --------------------butterfly--------------------- */
+
+
+canvas {
+    position: absolute;
+    top: 1020vh;
+    left: 55%;
+    transform: translateX(-30%);
+    z-index: 10;
+    /* border: 2px solid red; */
+
+}
+
+canvas:hover {
+    cursor: url('./images/mouseicon/Hold.png'), auto;
+}

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000&family=Raleway:ital,wght@0,100..900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 500vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #ebe7e2;
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 100;
+            font-style: normal;
+            transition: background-color 0.5s ease;
+            cursor: url('../images/mouseicon/1.png'), auto;
+        }
+
+        #page,
+        #page1,
+        #page2,
+        #page3,
+        #page4 {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .pic {
+            transform: scale(0.6);
+        }
+
+        #page3 .pic {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-39%, -55%) scale(0.6);
+        }
+
+        #identity {
+            z-index: 1;
+            transform: translateX(50px);
+        }
+
+        #identityCover {
+            position: absolute;
+            z-index: 2;
+            transform: translate(-73%, -50%) scale(0.6);
+            transition: opacity 2s ease-in-out;
+        }
+
+        #eye {
+            position: absolute;
+            z-index: 3;
+            transition: opacity 2s ease-in-out, transform 0.3s ease;
+            /* Combined transitions */
+            animation: zoomInOut 1s infinite alternate;
+            /* Apply animation */
+        }
+
+        @keyframes zoomInOut {
+            0% {
+                transform: scale(0.5);
+                /* Start with normal size */
+            }
+
+            100% {
+                transform: scale(0.6);
+                /* Scale up to 120% */
+            }
+        }
+
+
+        #eye:hover {
+            cursor: url('../images/mouseicon/2.png'), auto;
+            filter: brightness(1.2);
+            /* 调整亮度 */
+        }
+
+
+
+        #page4 .pic {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+        }
+
+        #body {
+            z-index: 3;
+        }
+
+        #pinkbg {
+            z-index: 1;
+        }
+
+        #page h1 {
+            position: absolute;
+        }
+
+        #what {
+            z-index: 1;
+            font-size: 200px;
+            color: rgb(205, 200, 187);
+        }
+
+        #answer {
+            z-index: 2;
+            font-size: 50px;
+        }
+
+        #page1 h1 {
+            position: absolute;
+            top: 15%;
+            z-index: 3;
+
+        }
+
+
+
+        #page2 h1 {
+            position: absolute;
+            top: 10%;
+            z-index: 3;
+        }
+
+        #page3 h1 {
+            position: absolute;
+            top: 10%;
+            z-index: 3;
+        }
+
+        #step3 {
+            position: absolute;
+            top: 5%;
+            z-index: 4;
+        }
+
+        #ultimate {
+            position: absolute;
+            top: 25%;
+            font-size: 100px;
+            opacity: 20%;
+            z-index: 2;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .white-background {
+            background-color: #fff;
+        }
+
+        #back,
+        #continue {
+
+            color: #000000;
+            text-align: center;
+            font-size: 20px;
+            border: 2px solid #000;
+            /* 将边框颜色设置为黑色 */
+            padding: 10px 20px;
+
+        }
+
+        #back {
+            background-color: #ebe7e2;
+            position: absolute;
+            left: 4%;
+            top: 5%;
+        }
+
+        #continue {
+            background-color: #ffffff;
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+
+        }
+
+        #continue:hover {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border-color: rgb(0, 0, 0);
+            transition: 0.7s;
+
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+        #back:hover {
+            background-color: rgb(51, 51, 50);
+            color: rgb(255, 255, 255);
+            border-color: rgb(51, 51, 50);
+            transition: 0.7s;
+            cursor: url('../images/mouseicon/2.png'), auto;
+        }
+
+        #page h2 {
+            position: absolute;
+            bottom: 10px;
+            color: rgb(205, 200, 187)
+        }
+
+        #scrollDown {
+            opacity: 1;
+            /* 初始透明度为1 */
+            transition: opacity 1s ease;
+            /* 添加透明度过渡效果 */
+        }
+
+        #scrollDown.hidden {
+            opacity: 0;
+            /* 设置透明度为0，使元素渐渐消失 */
+        }
+
+        #what,
+        #answer,
+        #scrollDown {
+            opacity: 0;
+            animation-fill-mode: forwards;
+            /* 保持动画结束后的样式 */
+        }
+
+        #what,
+        #answer {
+            animation-duration: 2s;
+        }
+
+        #scrollDown {
+            animation-duration: 1.5s;
+        }
+
+        #what {
+            animation-name: fadeInWhat;
+            animation-delay: 0.5s;
+            /* 延迟0.5秒开始动画 */
+        }
+
+        #answer {
+            animation-name: fadeInAnswer;
+            animation-delay: 2.5s;
+            /* 延迟2.5秒开始动画 */
+        }
+
+        #scrollDown {
+            animation-name: fadeInScrollDown;
+            animation-delay: 4s;
+            /* 延迟4秒开始动画 */
+        }
+
+        @keyframes fadeInWhat {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInAnswer {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInScrollDown {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .pic {
+            transition: transform 0.1s;
+            transform-style: preserve-3d;
+        }
+
+        #page2 {
+
+            perspective: 1000px;
+            /* 设定3D效果的视距 */
+        }
+
+        #funeralImage {
+            transform: scale(0.5);
+        }
+
+        #page2h1 {
+            background-color: rgba(255, 255, 255, 0.6);
+            /* 半透明白色背景 */
+            padding: 20px;
+            /* 内边距 */
+            border: 2px solid #000;
+            /* 黑色边框 */
+            color: #000;
+            /* 文字颜色为黑色 */
+            text-align: center;
+            /* 文字居中 */
+            max-width: 80%;
+            /* 最大宽度 */
+            margin: 0 auto;
+            /* 居中显示 */
+        }
+        #step1{
+            transform:  translateX(-5%) scale(0.5) ;
+           
+
+        }
+    </style>
+</head>
+
+<body>
+    <audio src="../music/hospital.mp3" id="bgm2"></audio>
+    <section id="page">
+        <button id="back">back</button>
+        <h1 id="what">WHAT IS DEATH</h1>
+        <h1 id="answer">It is said that there are three deaths.</h1>
+        <h2 id="scrollDown">SCROLL DOWN</h2>
+    </section>
+    <section id="page1">
+        <h1>The first death is when your heart stops beating and you are biologically declared dead.</h1>
+        <!-- <img src="../images/steps/step1.png" id="step1" class="pic"> -->
+        <img src="../images/steps/step1.gif" id="step1" class="pic">
+        
+    </section>
+
+    <section id="page2">
+        <h1 id="page2h1">The second death is your social death.<br> People attend your funeral dressed in black...
+        </h1>
+        <img src="../images/steps/funeral.png" class="pic" id="funeralImage">
+    </section>
+
+
+    <section id="page3">
+        <h1>...and the world erases your proof of existence.</h1>
+        <img src="../images/steps/identity.png" class="pic" id="identity">
+        <img src="../images/steps/identityCover.png" class="pic" id="identityCover">
+        <img src="../images/steps/eye.png" class="pic" id="eye">
+    </section>
+
+    <section id="page4">
+        <h1 id="step3">The third death is when the last person in the world who remembers you, forgets you, <br> which
+            is called the...</h1>
+        <h1 id="ultimate">ULTIMATE DEATH</h1>
+        <img src="../images/steps/body.png" class="pic" id="body">
+        <img src="../images/steps/pinkbg.png" class="pic" id="pinkbg">
+        <button id="continue">continue</button>
+    </section>
+
+    <audio src="../soundeffect/photo.mp3" id="clickSound"></audio>
+
+    <script>
+
+        window.onload = function () {
+
+            var music1 = document.getElementById('bgm2');
+            music1.volume = 0.5; // 初始化音量为0
+            music1.play();
+
+            music1.addEventListener('ended', function () {
+                music1.currentTime = 0; // 将音乐播放时间重置为 0
+                music1.play(); // 再次播放音乐
+            });
+
+            // 获取元素
+            const what = document.getElementById('what');
+            const answer = document.getElementById('answer');
+            const scrollDown = document.getElementById('scrollDown');
+
+            // 设置延迟显示
+            setTimeout(function () {
+                what.style.opacity = '1';
+            }, 2000); // 2秒后显示what
+
+            setTimeout(function () {
+                answer.style.opacity = '1';
+            }, 3500); // 1.5秒后显示answer
+
+            setTimeout(function () {
+                scrollDown.style.opacity = '1';
+            }, 5000); // 1.5秒后显示scroll down
+        }
+
+        document.getElementById("eye").addEventListener("click", function () {
+            document.getElementById("identityCover").classList.add("fade-out");
+            document.getElementById("eye").classList.add("fade-out");
+        });
+        window.addEventListener('scroll', function () {
+            var page4 = document.getElementById('page4');
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var pageBottom = scrollTop + window.innerHeight;
+            var pageHeight = document.body.scrollHeight;
+            if (pageBottom >= pageHeight - window.innerHeight * 0.2 && pageBottom <= pageHeight) {
+                document.body.classList.add('white-background');
+            } else {
+                document.body.classList.remove('white-background');
+            }
+        });
+        // 存储初始位置信息
+        const body = document.getElementById('body');
+        const bodyRect = body.getBoundingClientRect();
+        const bodyCenterX = bodyRect.left + bodyRect.width / 2;
+        const bodyCenterY = bodyRect.top + bodyRect.height / 2;
+
+        const pinkbg = document.getElementById('pinkbg');
+        const pinkbgRect = pinkbg.getBoundingClientRect();
+        const pinkbgCenterX = pinkbgRect.left + pinkbgRect.width / 2;
+        const pinkbgCenterY = pinkbgRect.top + pinkbgRect.height / 2;
+
+        document.addEventListener('mousemove', function (event) {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // 计算鼠标距离 body 中心的偏移量
+            const deltaX = mouseX - bodyCenterX;
+            const deltaY = mouseY - bodyCenterY;
+
+            // 计算 body 需要移动的距离，但保持初始大小和位置不变，并向上平移一点
+            let moveX = -deltaX * 0.05;
+            let moveY = -deltaY * 0.05 + 5; // 向上平移10个像素
+
+            // 如果移动将 body 移出页面顶部，则限制移动范围
+            const minTop = 50; // 限制最小顶部距离为50像素
+            const newTop = bodyRect.top + moveY;
+            if (newTop < minTop) {
+                moveY = minTop - bodyRect.top;
+            }
+
+            // 将 body 移动到新的位置
+            body.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) scale(0.6)`;
+
+            // 计算 pinkbg 需要移动的距离，但保持初始大小和位置不变，并向下平移一点
+            const pinkbgDeltaX = pinkbgCenterX - mouseX;
+            const pinkbgDeltaY = pinkbgCenterY - mouseY;
+            const movePinkbgX = -pinkbgDeltaX * 0.01;
+            const movePinkbgY = -pinkbgDeltaY * 0.01 + 50; // 向下平移10个像素
+
+            // 将 pinkbg 移动到新的位置
+            pinkbg.style.transform = `translate(calc(-50% + ${movePinkbgX}px), calc(-50% + ${movePinkbgY}px)) scale(0.6)`;
+        });
+
+        document.getElementById('back').addEventListener('click', function () {
+            // 点击 plant1 后跳转到 plant.html
+            window.location.href = '../html/reborn.html';
+        });
+
+        document.getElementById('continue').addEventListener('click', function () {
+            // 点击 plant1 后跳转到 plant.html
+            window.location.href = '../html/memory.html';
+        });
+
+
+
+        const scrollDown = document.getElementById('scrollDown');
+        window.addEventListener('scroll', function () {
+            const scrollPosition = window.scrollY; // 获取滚动位置
+            const windowHeight = window.innerHeight; // 获取窗口高度
+            // 如果滚动位置超过窗口高度，隐藏滚动提示
+            if (scrollPosition >= windowHeight / 2) {
+                scrollDown.classList.add('hidden');
+            }
+        });
+
+        document.getElementById("eye").addEventListener("click", function () {
+            var clickSound = document.getElementById("clickSound");
+            clickSound.play();
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            const image = document.getElementById('funeralImage');
+            const rect = image.getBoundingClientRect();
+            const x = e.clientX - rect.left; // 鼠标在元素内的X坐标
+            const y = e.clientY - rect.top;  // 鼠标在元素内的Y坐标
+            const halfWidth = rect.width / 2;
+            const halfHeight = rect.height / 2;
+
+            const rotateY = (x - halfWidth) / halfWidth * 10; // 控制左右旋转角度
+            const rotateX = (halfHeight - y) / halfHeight * 10; // 控制上下旋转角度
+
+            image.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+        });
+
+        document.addEventListener('mouseout', function () {
+            const image = document.getElementById('funeralImage');
+            image.style.transform = 'rotateY(0) rotateX(0)'; // 鼠标移出时恢复原始状态
+        });
+      
+
+    </script>
+</body>
+
+</html>
